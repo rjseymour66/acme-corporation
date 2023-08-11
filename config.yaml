@@ -1,4 +1,4 @@
-baseURL: http://example.org/  # Your website location
+#baseURL: http://example.org/  # Your website location
 languageCode: en-us   
 title: Acme Corportaion       # Website name
 theme: Eclectic               # Name of directory that holds the theme
