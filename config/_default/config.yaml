@@ -1,0 +1,6 @@
+#baseURL: http://example.org/  # Your website location
+languageCode: en-us   
+title: Acme Corporation       # Website name
+theme: Eclectic               # Name of directory that holds the theme
+enableEmoji: true
+enableGitInfo: true
