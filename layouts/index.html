@@ -39,6 +39,7 @@
     {{with $.Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
     <a href="/blog">Explore</a>
   </section>
+  
 
   {{with resources.GetMatch "products.csv"}}
   <section id="products">

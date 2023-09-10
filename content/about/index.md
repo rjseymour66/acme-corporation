@@ -65,3 +65,10 @@ Gabby
 : Cool Content Master
 : Cautious
 
+Our values
+-----------
+
+{{< repeat 5 >}}
+Custom is our **number 1** priority.
+{{</ repeat >}}
+Nothing else.
