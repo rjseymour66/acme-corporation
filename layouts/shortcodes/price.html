@@ -1,10 +1,5 @@
-{{- $product := default (.Get 0) (.Get "product") -}}
-{{- if $product -}}
-    {{- $products := resources.GetMatch "products.csv" -}}
-    {{- $parsedProducts := $products | transform.Unmarshal (dict "delimiter" ",") -}}
-    {{- range $r := $parsedProducts -}}
-        {{- if eq (index $r 0) $product -}}
-            $ {{- trim (index $r 2) " " -}}
-        {{- end -}}
-    {{- end -}}
-{{- end -}}
+{{/* Get the product info from the parameter passed to the shortcode  */}}
+{{$product := default (.Get 0) (.Get "product")}}
+
+{{/* Figure this out! */}}
+$ {{index (index (partialCached "products.html" "key") $product) "Price" }}
