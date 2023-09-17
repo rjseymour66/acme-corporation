@@ -9,6 +9,7 @@
     {{with $title}}<h1>{{.}}</h1>{{end}}
     {{with $.Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
     <a href="/blog">Explore</a>
+    {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
   </section>
   
 

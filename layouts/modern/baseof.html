@@ -20,16 +20,7 @@
           <img src="{{site.BaseURL}}/image/logo.svg" alt="Acme Logo" height="36" width="48" />
           Acme Corporation
         </a>
-        {{ with site.Menus.main }}
-        <nav>
-          <button class="hamburger">&#9776;</button>
-          <ul>
-            {{range .}}
-            <li><a href="{{.URL}}">{{.Name | humanize}}</a></li>
-            {{end}}
-          </ul>
-        </nav>
-        {{end}}
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) "main" }}
       </header>
     {{end}}
 
@@ -49,18 +40,8 @@
 
     {{block "footer" . }}
     <footer class="dark">
+      {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
 
-        {{ with site.Menus.footer }}
-        <nav>
-          <ul>
-            {{ range .}}
-            <li>
-              <a href="{{.URL}}">{{.Name | humanize}}</a>
-            </li>
-            {{end}}
-          </ul>
-        </nav>
-        {{end}}
         <ul>
           {{with site.Author.facebook}}
           <li>
