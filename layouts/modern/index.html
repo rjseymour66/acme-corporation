@@ -4,13 +4,15 @@
 {{$title := default site.Title .Title}}
 
 
-  <section id="intro">
-    <img src="./image/logo.svg" alt="Acme Logo" width="64" />
+<section id="hero">
+  <img class="hero" src="{{partialCached "hero.svg" $ "nothing"}}" alt="Acme Corporation" width="24rem" />
+  <div class="intro">
     {{with $title}}<h1>{{.}}</h1>{{end}}
-    {{with $.Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
-    <a href="/blog">Explore</a>
+    {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+    <a href="{{ref . (.Param "explore")}}">Explore</a>
     {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
-  </section>
+  </div>
+</section>
   
 
   {{with resources.GetMatch "products.csv"}}

@@ -7,7 +7,9 @@
         <meta name="description" content={{.}}>
     {{end}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ site.BaseURL }}/index.css">
+    {{ $css := resources.GetMatch "index.css.tpl"
+          | resources.ExecuteAsTemplate "index.css" "nothing" }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
     {{$title := default site.Title $.Title}}
     {{with $title}}<title>{{.}}</title>{{end}}
 
@@ -17,7 +19,9 @@
     {{block "header" . }}
     <header>
         <a href="{{ site.BaseURL | relLangURL }}">
-          <img src="{{site.BaseURL}}/image/logo.svg" alt="Acme Logo" height="36" width="48" />
+          {{ $logo := resources.GetMatch "image/logo.svg.tpl"
+              | resources.ExecuteAsTemplate "logo.svg" "nothing" }}
+          <img src="{{$logo.Permalink}}" alt="Acme Logo" height="36" width="48" />
           Acme Corporation
         </a>
         {{ partialCached "menu.html" (dict "Menu" site.Menus.main "Button" true) "main" }}
